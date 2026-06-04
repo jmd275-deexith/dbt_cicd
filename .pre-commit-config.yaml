@@ -1,0 +1,22 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      # Strips trailing spaces from every line
+      - id: trailing-whitespace
+
+      # Ensures every file ends with a newline (POSIX standard)
+      - id: end-of-file-fixer
+
+      # Validates YAML syntax — catches broken sources.yml, dbt_project.yml early
+      # --unsafe is required because dbt uses custom YAML tags
+      - id: check-yaml
+        args: ["--unsafe"]
+
+      # Catches merge conflict markers (<<<<<<, =======, >>>>>>>) left in files
+      - id: check-merge-conflict
+
+      # Blocks anyone from committing directly to main
+      # All changes must come through a PR
+      - id: no-commit-to-branch
+        args: ["--branch", "main"]
