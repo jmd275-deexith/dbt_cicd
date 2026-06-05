@@ -1,0 +1,17 @@
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "v$version"
+version_scheme = "semver"
+version_provider = "commitizen"
+major_version_zero = true
+version = "0.1.0"
+
+# Valid commit types:
+#   feat     - new model, new source, new macro
+#   fix      - bug fix in existing model logic
+#   docs     - README, descriptions in YAML
+#   style    - formatting, SQLFluff fixes (no logic change)
+#   refactor - restructuring without behaviour change
+#   test     - adding dbt tests
+#   ci       - GitHub Actions / pre-commit changes
+#   chore    - deps bump, cleanup

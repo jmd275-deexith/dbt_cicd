@@ -20,3 +20,12 @@ repos:
       # All changes must come through a PR
       - id: no-commit-to-branch
         args: ["--branch", "main"]
+
+  # ── Commit message format enforcement ────────────────────────────────────────
+  # Validates the message AFTER you write it.
+  # Runs on the commit-msg git hook stage (not the pre-commit stage).
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.6.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
