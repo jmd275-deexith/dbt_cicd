@@ -21,6 +21,16 @@ repos:
       - id: no-commit-to-branch
         args: ["--branch", "main"]
 
+  # ── SQL linting ──────────────────────────────────────────────────────────────
+  # Lints all .sql files under models/ on every commit.
+  # Fails the commit if violations exist — developer must run
+  # `sqlfluff fix models/` to auto-correct, then re-stage and retry.
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 3.3.1
+    hooks:
+      - id: sqlfluff-lint
+        args: ["--dialect", "snowflake"]
+
   # ── Commit message format enforcement ────────────────────────────────────────
   # Validates the message AFTER you write it.
   # Runs on the commit-msg git hook stage (not the pre-commit stage).
